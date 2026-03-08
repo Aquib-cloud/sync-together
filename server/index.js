@@ -14,7 +14,7 @@ dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const clientBuildPath = path.join(__dirname, "../client/dist");
+// const clientBuildPath = path.join(__dirname, "../client/dist");
 const PORT = process.env.PORT || 3000;
 const corsOrigin = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim()).filter(Boolean)
@@ -32,8 +32,8 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-app.use(express.static(clientBuildPath));
-app.use("/assets", express.static(path.join(clientBuildPath, "assets")));
+// app.use(express.static(clientBuildPath));
+// app.use("/assets", express.static(path.join(clientBuildPath, "assets")));
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -390,8 +390,11 @@ io.on("connection", (socket) => {
 });
 
 // Express 5 catch-all route for SPA fallback.
-app.get("/{*path}", (req, res) => {
-  res.sendFile(path.join(clientBuildPath, "index.html"));
+// app.get("/{*path}", (req, res) => {
+//   res.sendFile(path.join(clientBuildPath, "index.html"));
+// });
+app.get("/", (req, res) => {
+  res.send("Sync-Together backend running 🚀");
 });
 
 server.listen(PORT, "0.0.0.0", () => {
