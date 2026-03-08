@@ -1,0 +1,534 @@
+.main {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  padding-left: 80px;
+  /* space reserved for the fixed sidebar */
+}
+
+@media (max-width: 768px) {
+
+  .ig-sidebar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 5000;
+  }
+
+}
+
+.ig-nav-center {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+.main.no-sidebar {
+  padding-left: 0;
+}
+
+
+.ig-badge {
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.join-requests-panel {
+
+  position: fixed;
+  width: min(260px, calc(100vw - 24px));
+  max-height: calc(100dvh - 140px);
+  overflow-y: auto;
+
+  background: #0f0f0f;
+  border: 1px solid #262626;
+
+  border-radius: 12px;
+
+  padding: 10px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+  z-index: 1000;
+}
+
+.reaction-picker {
+  position: fixed;
+  width: min(260px, calc(100vw - 108px));
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(14, 15, 22, 0.94);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.36);
+  z-index: 1450;
+}
+
+.reaction-picker__button {
+  min-height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.reaction-picker__button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.join-empty {
+  padding: 12px 8px;
+  color: #8e8e8e;
+  font-size: 14px;
+}
+
+.join-header {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.join-item {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px;
+}
+
+.join-avatar {
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+}
+
+.join-name {
+  flex: 1;
+}
+
+.join-actions button {
+
+  border: none;
+  cursor: pointer;
+
+  padding: 4px 8px;
+  min-height: 32px;
+
+  border-radius: 6px;
+}
+
+.accept-btn {
+  background: #0095f6;
+  color: white;
+}
+
+.reject-btn {
+  background: #262626;
+  color: white;
+}
+
+.join-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.content-area {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.ig-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 80px;
+  height: 100dvh;
+  background: url("/pic.png") center/cover no-repeat;
+  border-right: 1px solid #262626;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 18px 0;
+  z-index: 5000;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.ig-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.ig-nav-bottom {
+  margin-top: auto;
+  padding-bottom: 18px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.ig-nav-item {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  font-size: 22px;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.ig-nav-item.logo {
+  font-size: 26px;
+}
+
+.ig-nav-item:hover {
+  background: #121212;
+  transform: scale(1.05);
+}
+
+.ig-nav-item.active {
+  background: #1a1a1a;
+}
+
+/* Media toggle theme */
+.ig-nav-item.media-active {
+  background: linear-gradient(135deg,
+      rgba(124, 111, 251, 0.18),
+      rgba(93, 220, 255, 0.14));
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.55);
+
+  transform: scale(1.04);
+}
+
+/* video mode special glow */
+.ig-nav-item.video-active {
+  background: rgba(93, 220, 255, 0.14);
+}
+
+/* audio mode special glow */
+.ig-nav-item.audio-active {
+  background: rgba(93, 220, 255, 0.14);
+}
+
+
+.ig-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.ig-nav-item.profile {
+  padding: 0;
+}
+
+.ig-badge {
+  position: absolute;
+  top: 3px;
+  left: 24px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ff3040;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 18px;
+  pointer-events: none;
+}
+
+.ig-tooltip {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  background: #111;
+  color: #fff;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+.ig-nav-item:hover .ig-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+.sidebar-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.ig-nav-item.logo {
+  height: 67px;
+  width: 67px;
+}
+
+.ig-nav-item.logo img {
+  display: block;
+}
+
+/* Exit button retained from previous UI */
+.exit-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1400;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text, #f4f6ff);
+  transition: transform 0.2s var(--ease, ease), color 0.2s var(--ease, ease);
+  margin: 10px 5px;
+}
+
+.exit-btn:hover {
+  transform: scale(1.1);
+  color: var(--accent, #7c6ffb);
+}
+
+.mobile-profile-btn {
+  display: none;
+}
+
+.profile-panel {
+  position: fixed;
+  left: 96px;
+  bottom: 120px;
+  width: min(290px, calc(100vw - 128px));
+  padding: 14px 14px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(24, 25, 31, 0.92), rgba(16, 17, 23, 0.94));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
+  z-index: 1705;
+  color: #f5f6fb;
+}
+
+.profile-panel-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.profile-panel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.profile-panel-label {
+  font-size: 0.78rem;
+  color: #9ca3b4;
+}
+
+.profile-panel-value {
+  font-size: 0.82rem;
+  color: #f5f6fb;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-left: 0;
+    min-height: calc(100dvh - var(--mobile-nav-height, 60px) - env(safe-area-inset-bottom));
+    padding-bottom: calc(var(--mobile-nav-height, 60px) + env(safe-area-inset-bottom) + 12px);
+  }
+
+  .content-area {
+    min-height: calc(100dvh - var(--mobile-nav-height, 60px) - env(safe-area-inset-bottom));
+    position: relative;
+    z-index: 1;
+  }
+
+  .ig-sidebar {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    height: calc(var(--mobile-nav-height, 60px) + env(safe-area-inset-bottom));
+    z-index: 5000;
+    border-right: none;
+    border-top: 1px solid #262626;
+    padding: 0 8px env(safe-area-inset-bottom);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: rgba(14, 15, 22, 0.96);
+    backdrop-filter: blur(10px);
+    pointer-events: auto;
+  }
+
+  .ig-nav-top,
+  .ig-nav-bottom {
+    display: none;
+  }
+
+  .ig-nav-center {
+    position: static;
+    top: auto;
+    transform: none;
+    width: 100%;
+    height: var(--mobile-nav-height, 60px);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 4px;
+    pointer-events: auto;
+  }
+
+  .ig-nav-item {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .join-requests-panel {
+    max-height: min(52vh, 420px);
+    left: 12px;
+    right: 12px;
+    bottom: calc(var(--mobile-nav-height, 60px) + env(safe-area-inset-bottom) + 12px);
+    width: auto;
+    z-index: 6000;
+    pointer-events: auto;
+  }
+
+  .reaction-picker {
+    left: 12px;
+    right: 12px;
+    bottom: calc(var(--mobile-nav-height, 60px) + env(safe-area-inset-bottom) + 12px);
+    width: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+    z-index: 6000;
+    pointer-events: auto;
+  }
+
+  .reaction-picker__button {
+    min-height: 48px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .ig-tooltip {
+    display: none !important;
+  }
+
+  .profile-panel {
+    left: 12px;
+    right: 12px;
+    bottom: calc(var(--mobile-nav-height, 60px) + env(safe-area-inset-bottom) + 14px);
+    width: auto;
+    z-index: 6000;
+    pointer-events: auto;
+  }
+
+  .mobile-profile-btn {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 5004;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    background: rgba(14, 15, 22, 0.92);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .mobile-profile-btn .ig-avatar {
+    width: 100%;
+    height: 100%;
+  }
+
+  .exit-btn {
+    top: 8px;
+    right: 8px;
+    margin: 0;
+  }
+}

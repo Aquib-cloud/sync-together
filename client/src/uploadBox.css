@@ -1,0 +1,177 @@
+.upload-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.upload-file {
+  max-width: 450px;
+  padding: 50px;
+  width: 100%;
+  position: relative;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.upload-wrap {
+  border: 2px dashed #f13218;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.5s ease;
+  transform: scale(1);
+}
+
+.upload-wrap.dragging {
+  transform: scale(1.05);
+  border-color: #ff6a4d;
+}
+
+.upload-wrap.dropped {
+  border-color: transparent;
+}
+
+.upload-wrap input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.custom-upload-design {
+  padding: 50px 30px;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.upload-text {
+  font-size: 24px;
+  text-align: center;
+  color: #222;
+}
+
+.upload-text span {
+  color: #f13218;
+  font-weight: 600;
+}
+
+.upload-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f13218;
+  margin-bottom: 15px;
+  transform: scale(1);
+  transition: transform 0.5s ease-in-out;
+}
+
+.upload-icon img {
+  max-width: 20px;
+}
+
+.after-file-upload {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.after-file-upload > * {
+  position: absolute;
+}
+
+.animated-line {
+  stroke: #07da38;
+  stroke-width: 20;
+  fill: transparent;
+  position: relative;
+  top: -6px;
+  z-index: 1;
+}
+
+.animated-line path {
+  stroke: #07da38;
+  stroke-width: 20;
+  fill: transparent;
+  stroke-dasharray: 0 565;
+  stroke-linecap: round;
+  animation: progressAnimation 2s linear forwards;
+}
+
+.animated-line-2 {
+  stroke: #ffebe8;
+  stroke-width: 20;
+  fill: transparent;
+  position: absolute;
+  margin: auto;
+  top: 19px;
+}
+
+.animated-line-2 path {
+  stroke: #ffebe8;
+  stroke-width: 20;
+  fill: transparent;
+  stroke-dasharray: 565;
+  stroke-linecap: round;
+}
+
+@keyframes progressAnimation {
+  0% { stroke-dasharray: 0, 565; stroke: #f13218; }
+  100% { stroke-dasharray: 565; stroke: #07da38; }
+}
+
+.tick-line {
+  width: 100px;
+  height: 100px;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+
+.path.check {
+  stroke-dashoffset: -100;
+  animation: dash-check 0.9s 0.35s ease-in-out forwards;
+}
+
+@keyframes dash-check {
+  0% { stroke-dashoffset: -100; }
+  100% { stroke-dashoffset: 900; }
+}
+
+.text-uploaded {
+  position: absolute;
+  bottom: -30px;
+  font-size: 26px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #07da38;
+  font-weight: 700;
+}
+
+.upload-after-circle {
+  position: relative;
+}
+
+.upload-tick {
+  transform: scale(0.6);
+}
+
+@media (max-width: 600px) {
+  .custom-upload-design { min-height: 200px; }
+  .upload-file { padding: 30px; }
+  .upload-text { font-size: 18px; }
+}

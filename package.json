@@ -1,0 +1,9 @@
+{
+  "name": "sync-together",
+  "private": true,
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "node server/index.js",
+    "postinstall": "npm --prefix server install --omit=dev"
+  }
+}
